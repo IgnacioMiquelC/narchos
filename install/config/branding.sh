@@ -1,4 +1,4 @@
 # Allow the user to change the branding for fastfetch and screensaver
-mkdir -p ~/.config/omarchy/branding
-cp ~/.local/share/omarchy/icon.txt ~/.config/omarchy/branding/about.txt
-cp ~/.local/share/omarchy/logo.txt ~/.config/omarchy/branding/screensaver.txt
+mkdir -p ~/.config/narchos/branding
+cp ~/.local/share/narchos/icon.txt ~/.config/narchos/branding/about.txt
+cp ~/.local/share/narchos/logo.txt ~/.config/narchos/branding/screensaver.txt

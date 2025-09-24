@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+narchos-snapshot create || [ $? -eq 127 ]
+narchos-update-git
+narchos-update-perform

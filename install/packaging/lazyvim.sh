@@ -1,3 +1,3 @@
 if [[ ! -d "$HOME/.config/nvim" ]]; then
-  omarchy-lazyvim-setup
+  narchos-lazyvim-setup
 fi

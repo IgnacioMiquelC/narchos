@@ -1,8 +1,8 @@
 echo "Replace volume control GUI with a TUI"
 
-if omarchy-cmd-missing wiremix; then
-  omarchy-pkg-add wiremix
-  omarchy-pkg-drop pavucontrol
-  omarchy-refresh-applications
-  omarchy-refresh-waybar
+if narchos-cmd-missing wiremix; then
+  narchos-pkg-add wiremix
+  narchos-pkg-drop pavucontrol
+  narchos-refresh-applications
+  narchos-refresh-waybar
 fi

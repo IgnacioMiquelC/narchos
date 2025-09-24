@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cmd="$*"
+exec setsid uwsm app -- alacritty --class=narchos --title=narchos -e bash -c "narchos-show-logo; $cmd; narchos-show-done"

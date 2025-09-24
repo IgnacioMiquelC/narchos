@@ -1,0 +1,3 @@
+#!/bin/bash
+
+narchos-restart-app waybar

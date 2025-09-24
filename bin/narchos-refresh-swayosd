@@ -1,0 +1,5 @@
+#!/bin/bash
+
+narchos-refresh-config swayosd/config.toml
+narchos-refresh-config swayosd/style.css
+narchos-restart-swayosd

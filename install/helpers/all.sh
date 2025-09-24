@@ -1,4 +1,4 @@
-source $OMARCHY_INSTALL/helpers/chroot.sh
-source $OMARCHY_INSTALL/helpers/presentation.sh
-source $OMARCHY_INSTALL/helpers/errors.sh
-source $OMARCHY_INSTALL/helpers/logging.sh
+source $NARCHOS_INSTALL/helpers/chroot.sh
+source $NARCHOS_INSTALL/helpers/presentation.sh
+source $NARCHOS_INSTALL/helpers/errors.sh
+source $NARCHOS_INSTALL/helpers/logging.sh

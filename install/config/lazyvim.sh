@@ -1,1 +1,1 @@
-omarchy-lazyvim-setup
+narchos-lazyvim-setup

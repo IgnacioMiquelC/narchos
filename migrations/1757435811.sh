@@ -1,3 +1,3 @@
-echo "Copy Omarchy default app icons to .local/share/icons"
+echo "Copy narchos default app icons to .local/share/icons"
 
-source $OMARCHY_PATH/install/packaging/icons.sh
+source $NARCHOS_PATH/install/packaging/icons.sh

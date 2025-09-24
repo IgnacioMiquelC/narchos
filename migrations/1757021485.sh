@@ -1,3 +1,3 @@
 echo "Install Copy URL extension for Chromium"
 
-omarchy-refresh-config chromium-flags.conf
+narchos-refresh-config chromium-flags.conf

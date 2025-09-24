@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ "$(uname -r | sed 's/-arch/\.arch/')" != "$(pacman -Q linux | awk '{print $2}')" ]; then
+  gum confirm "Linux kernel has been updated. Reboot?" && narchos-state clear re*-required && sudo reboot now
+
+elif [ -f "$HOME/.local/state/narchos/reboot-required" ]; then
+  gum confirm "Updates require reboot. Ready?" && narchos-state clear re*-required && sudo reboot now
+
+elif [ -f "$HOME/.local/state/narchos/relaunch-required" ]; then
+  gum confirm "Updates require Hyprland relaunch. Ready?" && narchos-state clear re*-required && uwsm stop
+fi
+
+for file in "$HOME"/.local/state/narchos/restart-*-required; do
+  if [ -f "$file" ]; then
+    filename=$(basename "$file")
+    service=$(echo "$filename" | sed 's/restart-\(.*\)-required/\1/')
+    echo "Restarting $service"
+    narchos-state clear "$filename"
+    narchos-restart-"$service"
+  fi
+done

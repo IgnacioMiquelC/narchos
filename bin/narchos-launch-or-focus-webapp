@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if (($# == 0)); then
+  echo "Usage: narchos-launch-or-focus-webapp [window-pattern] [url]"
+  exit 1
+fi
+
+exec narchos-launch-or-focus "$1" "narchos-launch-webapp '$2'"
