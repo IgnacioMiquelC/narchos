@@ -1,7 +1,7 @@
 # narchos Plymouth Theme Script
 
-Window.SetBackgroundTopColor(0.101, 0.105, 0.149);
-Window.SetBackgroundBottomColor(0.101, 0.105,  0.149);
+Window.SetBackgroundTopColor(0.298, 0.302, 0.365);
+Window.SetBackgroundBottomColor(0.298, 0.302, 0.365);
 
 logo.image = Image("logo.png");
 logo.sprite = Sprite(logo.image);
