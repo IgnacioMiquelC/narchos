@@ -1,3 +1,4 @@
+# TODO: Update support handling on installation errors
 # Directs user to narchos Discord
 QR_CODE='
 █▀▀▀▀▀█ ▄ ▄ ▀▄▄▄█ █▀▀▀▀▀█
@@ -96,6 +97,7 @@ catch_errors() {
   gum style "This command halted with exit code $exit_code:"
   show_failed_script_or_command
 
+  # TODO: Update support handling on installation errors
   gum style "$QR_CODE"
   echo
   gum style "Get help from the community via QR code or at https://discord.gg/tXFUdasqhY"

@@ -8,8 +8,8 @@ for f in ~/.local/share/narchos/themes/*; do ln -nfs "$f" ~/.config/narchos/them
 
 # Set initial theme
 mkdir -p ~/.config/narchos/current
-ln -snf ~/.config/narchos/themes/tokyo-night ~/.config/narchos/current/theme
-ln -snf ~/.config/narchos/current/theme/backgrounds/1-scenery-pink-lakeside-sunset-lake-landscape-scenic-panorama-7680x3215-144.png ~/.config/narchos/current/background
+ln -snf ~/.config/narchos/themes/matte-black ~/.config/narchos/current/theme
+ln -snf ~/.config/narchos/current/theme/backgrounds/0-ship-at-sea.jpg ~/.config/narchos/current/background
 
 # Set specific app links for current theme
 ln -snf ~/.config/narchos/current/theme/neovim.lua ~/.config/nvim/lua/plugins/theme.lua
@@ -23,9 +23,6 @@ ln -snf ~/.config/narchos/current/theme/mako.ini ~/.config/mako/config
 mkdir -p ~/.config/eza
 ln -snf ~/.config/narchos/current/theme/eza.yml ~/.config/eza/theme.yml
 
-# Add managed policy directories for Chromium and Brave for theme changes
-sudo mkdir -p /etc/chromium/policies/managed
-sudo chmod a+rw /etc/chromium/policies/managed
-
+# Add managed policy directories for Brave theme changes
 sudo mkdir -p /etc/brave/policies/managed
 sudo chmod a+rw /etc/brave/policies/managed

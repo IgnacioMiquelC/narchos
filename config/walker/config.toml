@@ -42,11 +42,6 @@ label = "narchos - Github"
 url = "https://github.com/IgnacioMiquelC/narchos"
 keywords = ["narchos", "github"]
 
-[[builtins.bookmarks.entries]]
-label = "narchos Manual"
-url = "https://manuals.omamix.org/2/the-narchos-manual"
-keywords = ["narchos"]
-
 [builtins.calc]
 name = "Calculator"
 icon = ""
