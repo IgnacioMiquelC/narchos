@@ -73,18 +73,6 @@ aur_install_and_launch() {
   present_terminal "echo 'Installing $1 from AUR...'; yay -S --noconfirm $2 && setsid gtk-launch $3"
 }
 
-show_learn_menu() {
-  case $(menu "Learn" "  Keybindings\n  narchos\n  Hyprland\n󰣇  Arch\n  Neovim\n󱆃  Bash") in
-  *Keybindings*) narchos-menu-keybindings ;;
-  *narchos*) narchos-launch-webapp "https://learn.omacom.io/2/the-narchos-manual" ;;
-  *Hyprland*) narchos-launch-webapp "https://wiki.hypr.land/" ;;
-  *Arch*) narchos-launch-webapp "https://wiki.archlinux.org/title/Main_page" ;;
-  *Bash*) narchos-launch-webapp "https://devhints.io/bash" ;;
-  *Neovim*) narchos-launch-webapp "https://www.lazyvim.org/keymaps" ;;
-  *) show_main_menu ;;
-  esac
-}
-
 show_trigger_menu() {
   case $(menu "Trigger" "  Capture\n  Share\n󰔎  Toggle") in
   *Capture*) show_capture_menu ;;
@@ -119,15 +107,6 @@ show_screenrecord_menu() {
   *"Display + Audio"*) narchos-cmd-screenrecord output audio ;;
   *Display*) narchos-cmd-screenrecord output ;;
   *) show_capture_menu ;;
-  esac
-}
-
-show_share_menu() {
-  case $(menu "Share" "  Clipboard\n  File \n  Folder") in
-  *Clipboard*) terminal bash -c "narchos-cmd-share clipboard" ;;
-  *File*) terminal bash -c "narchos-cmd-share file" ;;
-  *Folder*) terminal bash -c "narchos-cmd-share folder" ;;
-  *) back_to show_trigger_menu ;;
   esac
 }
 
@@ -464,9 +443,7 @@ show_main_menu() {
 go_to_menu() {
   case "${1,,}" in
   *apps*) walker -p "Launch…" ;;
-  *learn*) show_learn_menu ;;
   *trigger*) show_trigger_menu ;;
-  *share*) show_share_menu ;;
   *style*) show_style_menu ;;
   *theme*) show_theme_menu ;;
   *screenshot*) show_screenshot_menu ;;
@@ -476,7 +453,6 @@ go_to_menu() {
   *install*) show_install_menu ;;
   *remove*) show_remove_menu ;;
   *update*) show_update_menu ;;
-  *about*) narchos-launch-about ;;
   *system*) show_system_menu ;;
   esac
 }
