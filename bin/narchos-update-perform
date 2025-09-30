@@ -1,8 +1,0 @@
-#!/bin/bash
-
-set -e
-
-narchos-update-available-reset
-narchos-update-system-pkgs
-narchos-migrate
-narchos-update-restart
