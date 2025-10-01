@@ -5,25 +5,43 @@ screensaver_in_focus() {
 }
 
 exit_screensaver() {
-  hyprctl keyword cursor:invisible false
-  pkill -x tte 2>/dev/null
-  pkill -f "alacritty --class Screensaver" 2>/dev/null
+  narchos-close-screensaver
   exit 0
 }
 
 trap exit_screensaver SIGINT SIGTERM SIGHUP SIGQUIT
 
+# Open the controlling TTY for reliable key detection even if stdin is altered
+exec 3</dev/tty
+
 hyprctl keyword cursor:invisible true
 
-while true; do
-  effect=$(tte 2>&1 | grep -oP '{\K[^}]+' | tr ',' ' ' | tr ' ' '\n' | sed -n '/^beams$/,$p' | sort -u | shuf -n1)
-  tte -i ~/.config/narchos/branding/screensaver.txt \
-    --frame-rate 240 --canvas-width 0 --canvas-height $(($(tput lines) - 2)) --anchor-canvas c --anchor-text c \
-    "$effect" &
+mapfile -t EFFECTS < <(tte 2>&1 | grep -oP '{\K[^}]+' | tr ',' ' ' | tr ' ' '\n' | sed -n '/^beams$/,$p' | sort -u)
 
-  while pgrep -x tte >/dev/null; do
-    if read -n 1 -t 3 || ! screensaver_in_focus; then
-      exit_screensaver
+# Default effect is beams
+if ! [ ${#EFFECTS[@]} -gt 0 ]; then
+  effect="beams"
+fi
+
+while true; do
+  effect="${EFFECTS[RANDOM % ${#EFFECTS[@]}]}"
+  tte -i ~/.config/narchos/branding/screensaver.txt \
+    --frame-rate 60 \
+    --canvas-width 0 \
+    --canvas-height $(($(tput lines))) \
+    --anchor-canvas c \
+    --anchor-text c \
+    "$effect" &
+    tte_pid=$!
+
+  while kill -0 "$tte_pid" 2>/dev/null; do
+    # Non-blocking keypress check (exit on Escape key)
+    if read -u 3 -rsn1 -t 0.1 key; then
+      if [[ "$key" == $'\e' ]]; then
+        exit_screensaver
+      fi
     fi
+    # Short sleep to avoid busy loop and ensure quick reaction when tte exits
+    sleep 0.05
   done
 done

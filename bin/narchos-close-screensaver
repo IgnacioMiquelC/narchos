@@ -1,0 +1,32 @@
+#!/bin/bash
+set -euo pipefail
+
+# Always restore cursor visibility
+hyprctl keyword cursor:invisible false || true
+
+# Stop the screensaver effect process if running
+pkill -x tte 2>/dev/null || true
+
+# Terminal-agnostic: kill any Hyprland client with class/title "Screensaver"
+if command -v hyprctl >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
+  pids="$(hyprctl clients -j | jq -r '.[] | select((.class=="Screensaver") or (.title=="Screensaver")) | .pid' | sort -u)"
+  if [ -n "${pids}" ]; then
+    # Politely ask them to exit
+    while read -r pid; do
+      [ -n "${pid}" ] && kill -TERM "${pid}" 2>/dev/null || true
+    done <<< "${pids}"
+    # Brief grace period, then force kill any that remain
+    sleep 0.2
+    while read -r pid; do
+      if [ -n "${pid}" ] && kill -0 "${pid}" 2>/dev/null; then
+        kill -KILL "${pid}" 2>/dev/null || true
+      fi
+    done <<< "${pids}"
+  fi
+fi
+
+# Fallbacks: match command lines for both Alacritty and Kitty screensaver instances
+pkill -f 'alacritty.*--class[ =]Screensaver' 2>/dev/null || true
+pkill -f 'kitty.*--class[ =]Screensaver' 2>/dev/null || true
+
+exit 0

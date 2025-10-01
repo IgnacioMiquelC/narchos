@@ -1,7 +1,22 @@
 #!/bin/bash
+set -euo pipefail
 
-# Lock the screen
-pidof hyprlock || hyprlock &
+# Launch the screensaver when locking
+narchos-launch-screensaver force || true
 
-# Avoid running screensaver when locked
-pkill -f "$TERMINAL --class Screensaver"
+# Small delay to ensure screensaver windows appear
+sleep 0.5
+
+# Lock the screen and block until unlock
+if pidof hyprlock >/dev/null 2>&1; then
+  # hyprlock already running: wait until it exits (user unlocks)
+  while pidof hyprlock >/dev/null 2>&1; do
+    sleep 0.2
+  done
+else
+  # Start hyprlock in the foreground so this script blocks until unlock
+  hyprlock
+fi
+
+# On unlock, close the screensaver
+narchos-close-screensaver
