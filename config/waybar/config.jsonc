@@ -3,17 +3,24 @@
   "layer": "top",
   "position": "top",
   "spacing": 0,
-  "height": 64,
+  "height": 26,
   "modules-left": ["custom/narchos", "hyprland/workspaces"],
-  "modules-center": ["clock", "custom/screenrecording-indicator"],
+  "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
   "modules-right": [
     "group/tray-expander",
+    "hyprland/language",
     "bluetooth",
     "network",
     "pulseaudio",
     "cpu",
     "battery"
   ],
+  "hyprland/language": {
+    "format": "{}",
+    "format-uk": "UA",
+    "format-en": "US",
+    "format-es": "ES"
+  },
   "hyprland/workspaces": {
     "on-click": "activate",
     "format": "{icon}",
@@ -45,6 +52,14 @@
     "format": "<span font='narchos'>\ue800</span>",
     "on-click": "narchos-menu",
     "tooltip-format": "narchos Menu\n\nSuper + Alt + Space"
+  },
+  "custom/update": {
+    "format": "",
+    "exec": "narchos-update-available",
+    "on-click": "narchos-launch-floating-terminal-with-presentation narchos-update",
+    "tooltip-format": "narchos update available",
+    "signal": 7,
+    "interval": 3600
   },
 
   "cpu": {
