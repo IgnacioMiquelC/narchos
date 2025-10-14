@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Hyprland launched via UWSM and login directly as user, rely on disk encryption + hyprlock for security
 
 # ==============================================================================
@@ -101,15 +103,11 @@ Description=narchos Seamless Auto-Login
 Documentation=https://github.com/IgnacioMiquelC/narchos
 Conflicts=getty@tty1.service
 After=systemd-user-sessions.service getty@tty1.service plymouth-quit.service systemd-logind.service
-PartOf=graphical.target
+Before=graphical.target
 
 [Service]
 Type=simple
 ExecStart=/usr/local/bin/seamless-login uwsm start -- hyprland.desktop
-Restart=always
-RestartSec=2
-StartLimitIntervalSec=30
-StartLimitBurst=2
 User=$USER
 TTYPath=/dev/tty1
 TTYReset=yes
@@ -119,10 +117,12 @@ StandardInput=tty
 StandardOutput=journal
 StandardError=journal+console
 PAMName=login
+Restart=no
 
 [Install]
-WantedBy=graphical.target
+WantedBy=multi-user.target
 EOF
+
 fi
 
 if [ ! -f /etc/systemd/system/plymouth-quit.service.d/wait-for-graphical.conf ]; then
@@ -143,9 +143,4 @@ fi
 # Enable narchos-seamless-login.service only if not already enabled
 if ! systemctl is-enabled narchos-seamless-login.service | grep -q enabled; then
   sudo systemctl enable narchos-seamless-login.service
-fi
-
-# Disable getty@tty1.service only if not already disabled
-if ! systemctl is-enabled getty@tty1.service | grep -q disabled; then
-  sudo systemctl disable getty@tty1.service
 fi

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 narchos-refresh-applications
 update-desktop-database ~/.local/share/applications
 

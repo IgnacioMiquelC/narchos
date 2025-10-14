@@ -1,3 +1,5 @@
+#!/bin/bash
+
 start_log_output() {
   local ANSI_SAVE_CURSOR="\033[s"
   local ANSI_RESTORE_CURSOR="\033[u"
@@ -7,8 +9,8 @@ start_log_output() {
   local ANSI_GRAY="\033[90m"
 
   # Save cursor position and hide cursor
-  printf $ANSI_SAVE_CURSOR
-  printf $ANSI_HIDE_CURSOR
+  printf '%s' "$ANSI_SAVE_CURSOR"
+  printf '%s' "$ANSI_HIDE_CURSOR"
 
   (
     local log_lines=20
@@ -46,8 +48,8 @@ start_log_output() {
 
 stop_log_output() {
   if [ -n "${monitor_pid:-}" ]; then
-    kill $monitor_pid 2>/dev/null || true
-    wait $monitor_pid 2>/dev/null || true
+    kill "$monitor_pid" 2>/dev/null || true
+    wait "$monitor_pid" 2>/dev/null || true
     unset monitor_pid
   fi
 }
@@ -56,7 +58,8 @@ start_install_log() {
   sudo touch "$NARCHOS_INSTALL_LOG_FILE"
   sudo chmod 666 "$NARCHOS_INSTALL_LOG_FILE"
 
-  export NARCHOS_START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+  NARCHOS_START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+  export NARCHOS_START_TIME
 
   echo "=== narchos Installation Started: $NARCHOS_START_TIME ===" >>"$NARCHOS_INSTALL_LOG_FILE"
   start_log_output
@@ -68,9 +71,12 @@ stop_install_log() {
 
   if [[ -n ${NARCHOS_INSTALL_LOG_FILE:-} ]]; then
     NARCHOS_END_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-    echo "=== narchos Installation Completed: $NARCHOS_END_TIME ===" >>"$NARCHOS_INSTALL_LOG_FILE"
-    echo "" >>"$NARCHOS_INSTALL_LOG_FILE"
-    echo "=== Installation Time Summary ===" >>"$NARCHOS_INSTALL_LOG_FILE"
+
+    {
+      echo "=== narchos Installation Completed: $NARCHOS_END_TIME ===";
+      echo "";
+      echo "=== Installation Time Summary ===";
+    } >> "$NARCHOS_INSTALL_LOG_FILE"
 
     if [ -f "/var/log/archinstall/install.log" ]; then
       ARCHINSTALL_START=$(grep -m1 '^\[' /var/log/archinstall/install.log 2>/dev/null | sed 's/^\[\([^]]*\)\].*/\1/' || true)

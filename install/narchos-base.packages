@@ -1,7 +1,6 @@
 # narchos core package list installed via install/packages.sh
 # This file is also used by the ISO builder when determining needs
 
-asdcontrol-git
 avahi
 bash-completion
 bat
@@ -70,7 +69,6 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 nss-mdns
-nvim
 obs-studio
 obsidian
 pamixer

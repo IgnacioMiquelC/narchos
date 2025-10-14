@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if ! command -v limine &>/dev/null; then
   # Add kernel hooks
   if ! grep -Eq '^HOOKS=.*plymouth' /etc/mkinitcpio.conf; then
@@ -104,7 +106,7 @@ if ! command -v limine &>/dev/null; then
     new_cmdline=$(echo "$new_cmdline" | xargs)
 
     # Write new file
-    echo $new_cmdline | sudo tee /etc/kernel/cmdline
+    echo "$new_cmdline" | sudo tee /etc/kernel/cmdline
   else
     echo ""
     echo " None of systemd-boot, GRUB, or UKI detected. Please manually add these kernel parameters:"

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 run_logged $NARCHOS_INSTALL/config/config.sh
 run_logged $NARCHOS_INSTALL/config/theme.sh
 run_logged $NARCHOS_INSTALL/config/branding.sh
@@ -14,7 +16,6 @@ run_logged $NARCHOS_INSTALL/config/fix-powerprofilesctl-shebang.sh
 run_logged $NARCHOS_INSTALL/config/docker.sh
 run_logged $NARCHOS_INSTALL/config/mimetypes.sh
 run_logged $NARCHOS_INSTALL/config/localdb.sh
-run_logged $NARCHOS_INSTALL/config/sudoless-asdcontrol.sh
 run_logged $NARCHOS_INSTALL/config/hardware/network.sh
 run_logged $NARCHOS_INSTALL/config/hardware/set-wireless-regdom.sh
 run_logged $NARCHOS_INSTALL/config/hardware/fix-fkeys.sh
@@ -23,7 +24,5 @@ run_logged $NARCHOS_INSTALL/config/hardware/printer.sh
 run_logged $NARCHOS_INSTALL/config/hardware/usb-autosuspend.sh
 run_logged $NARCHOS_INSTALL/config/hardware/ignore-power-button.sh
 run_logged $NARCHOS_INSTALL/config/hardware/nvidia.sh
+run_logged $NARCHOS_INSTALL/config/hardware/intel.sh
 run_logged $NARCHOS_INSTALL/config/hardware/fix-f13-amd-audio-input.sh
-run_logged $NARCHOS_INSTALL/config/hardware/fix-apple-bcm4360.sh
-run_logged $NARCHOS_INSTALL/config/hardware/fix-apple-spi-keyboard.sh
-run_logged $NARCHOS_INSTALL/config/hardware/fix-apple-t2.sh

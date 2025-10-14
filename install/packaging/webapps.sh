@@ -1,3 +1,5 @@
+#!/bin/bash
+
 narchos-webapp-install "WhatsApp" https://web.whatsapp.com/ WhatsApp.png
 narchos-webapp-install "YouTube" https://youtube.com/ YouTube.png
 narchos-webapp-install "Youtube Music" https://music.youtube.com/ "Youtube Music.png"

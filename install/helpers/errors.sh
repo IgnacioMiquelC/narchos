@@ -1,19 +1,4 @@
-# TODO: Update support handling on installation errors
-# Directs user to narchos Discord
-QR_CODE='
-█▀▀▀▀▀█ ▄ ▄ ▀▄▄▄█ █▀▀▀▀▀█
-█ ███ █ ▄▄▄▄▀▄▀▄▀ █ ███ █
-█ ▀▀▀ █ ▄█  ▄█▄▄▀ █ ▀▀▀ █
-▀▀▀▀▀▀▀ ▀▄█ █ █ █ ▀▀▀▀▀▀▀
-▀▀█▀▀▄▀▀▀▀▄█▀▀█  ▀ █ ▀ █ 
-█▄█ ▄▄▀▄▄ ▀ ▄ ▀█▄▄▄▄ ▀ ▀█
-▄ ▄▀█ ▀▄▀▀▀▄ ▄█▀▄█▀▄▀▄▀█▀
-█ ▄▄█▄▀▄█ ▄▄▄  ▀ ▄▀██▀ ▀█
-▀ ▀   ▀ █ ▀▄  ▀▀█▀▀▀█▄▀  
-█▀▀▀▀▀█ ▀█  ▄▀▀ █ ▀ █▄▀██
-█ ███ █ █▀▄▄▀ █▀███▀█▄██▄
-█ ▀▀▀ █ ██  ▀ █▄█ ▄▄▄█▀ █
-▀▀▀▀▀▀▀ ▀ ▀ ▀▀▀  ▀ ▀▀▀▀▀▀'
+#!/bin/bash
 
 # Track if we're already handling an error to prevent double-trapping
 ERROR_HANDLING=false
@@ -97,11 +82,6 @@ catch_errors() {
   gum style "This command halted with exit code $exit_code:"
   show_failed_script_or_command
 
-  # TODO: Update support handling on installation errors
-  gum style "$QR_CODE"
-  echo
-  gum style "Get help from the community via QR code or at https://discord.gg/tXFUdasqhY"
-
   # Offer options menu
   while true; do
     options=()
@@ -109,11 +89,6 @@ catch_errors() {
     # If online install, show retry first
     if [[ -n ${NARCHOS_ONLINE_INSTALL:-} ]]; then
       options+=("Retry installation")
-    fi
-
-    # Add upload option if internet is available
-    if ping -c 1 -W 1 1.1.1.1 >/dev/null 2>&1; then
-      options+=("Upload log for support")
     fi
 
     # Add remaining options
@@ -133,9 +108,6 @@ catch_errors() {
       else
         tail "$NARCHOS_INSTALL_LOG_FILE"
       fi
-      ;;
-    "Upload log for support")
-      narchos-upload-install-log
       ;;
     "Exit" | "")
       exit 1

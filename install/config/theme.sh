@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Set links for Nautilius action icons
 sudo ln -snf /usr/share/icons/Adwaita/symbolic/actions/go-previous-symbolic.svg /usr/share/icons/Yaru/scalable/actions/go-previous-symbolic.svg
 sudo ln -snf /usr/share/icons/Adwaita/symbolic/actions/go-next-symbolic.svg /usr/share/icons/Yaru/scalable/actions/go-next-symbolic.svg
@@ -10,9 +12,6 @@ for f in ~/.local/share/narchos/themes/*; do ln -nfs "$f" ~/.config/narchos/them
 mkdir -p ~/.config/narchos/current
 ln -snf ~/.config/narchos/themes/matte-black ~/.config/narchos/current/theme
 ln -snf ~/.config/narchos/current/theme/backgrounds/0-ship-at-sea.jpg ~/.config/narchos/current/background
-
-# Set specific app links for current theme
-ln -snf ~/.config/narchos/current/theme/neovim.lua ~/.config/nvim/lua/plugins/theme.lua
 
 mkdir -p ~/.config/btop/themes
 ln -snf ~/.config/narchos/current/theme/btop.theme ~/.config/btop/themes/current.theme

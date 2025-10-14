@@ -1,1 +1,0 @@
-narchos-lazyvim-setup

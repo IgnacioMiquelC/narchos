@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Configure Docker daemon:
 # - limit log size to avoid running out of disk
 # - use host's DNS resolver
@@ -20,7 +22,7 @@ sudo systemctl restart systemd-resolved
 sudo systemctl enable docker
 
 # Give this user privileged Docker access
-sudo usermod -aG docker ${USER}
+sudo usermod -aG docker "${USER}"
 
 # Prevent Docker from preventing boot for network-online.target
 sudo mkdir -p /etc/systemd/system/docker.service.d

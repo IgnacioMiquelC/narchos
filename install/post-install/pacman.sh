@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Configure pacman
 sudo cp -f ~/.local/share/narchos/default/pacman/pacman.conf /etc/pacman.conf
 sudo cp -f ~/.local/share/narchos/default/pacman/mirrorlist /etc/pacman.d/mirrorlist

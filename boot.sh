@@ -3,7 +3,8 @@
 # Set install mode to online since boot.sh is used for curl installations
 export NARCHOS_ONLINE_INSTALL=true
 
-ansi_art='   ▄▄      ▄         ▄        ▄                  ▄
+ansi_art=\
+'   ▄▄      ▄         ▄        ▄                  ▄
  ▄████     █▄  ▄██████   ▄█████  ▄██████▄  ▄█    █▄   ▄█████▄   ▄████▄
 ███ ██    ▄██ ▀██   ██  ██   ██ ███    ▀█ ██     ██  ██▀   ▀██ ██    ██
  ██  ██   ██   ██   ██  ██   ██ ██   ▀▄█▀ ██     ██  ██     ██ ██  ▀▄█▀

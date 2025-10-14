@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copy over narchos configs
 mkdir -p ~/.config
 cp -R ~/.local/share/narchos/config/* ~/.config/

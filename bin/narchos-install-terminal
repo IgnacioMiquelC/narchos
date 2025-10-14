@@ -8,7 +8,7 @@ fi
 package="$1"
 
 # Install package
-narchos-pkg-add $package
+narchos-pkg-add "$package"
 
 # Set as default terminal
 echo "Setting $package as new default terminal..."
