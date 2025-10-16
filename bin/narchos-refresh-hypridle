@@ -1,4 +1,0 @@
-#!/bin/bash
-
-narchos-refresh-config hypr/hypridle.conf
-narchos-restart-hypridle

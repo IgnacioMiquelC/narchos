@@ -1,3 +1,0 @@
-#!/bin/bash
-
-narchos-refresh-config fastfetch/config.jsonc

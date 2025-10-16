@@ -1,4 +1,0 @@
-#!/bin/bash
-
-narchos-refresh-config walker/config.toml
-narchos-restart-walker

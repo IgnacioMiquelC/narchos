@@ -1,7 +1,0 @@
-#!/bin/bash
-
-narchos-refresh-config hypr/autostart.conf
-narchos-refresh-config hypr/bindings.conf
-narchos-refresh-config hypr/envs.conf
-narchos-refresh-config hypr/input.conf
-narchos-refresh-config hypr/hyprland.conf

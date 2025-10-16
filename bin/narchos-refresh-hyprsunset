@@ -1,4 +1,0 @@
-#!/bin/bash
-
-narchos-refresh-config hypr/hyprsunset.conf
-narchos-restart-hyprsunset

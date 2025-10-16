@@ -1,5 +1,0 @@
-#!/bin/bash
-
-narchos-refresh-config waybar/config.jsonc
-narchos-refresh-config waybar/style.css
-narchos-restart-waybar

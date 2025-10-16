@@ -1,3 +1,0 @@
-#!/bin/bash
-
-narchos-refresh-config hypr/hyprlock.conf
