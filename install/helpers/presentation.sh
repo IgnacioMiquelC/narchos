@@ -26,10 +26,11 @@ export LOGO_PATH
 export LOGO_WIDTH
 export LOGO_HEIGHT
 
-export PADDING_LEFT=$((($TERM_WIDTH - $LOGO_WIDTH) / 2))
-export PADDING_LEFT_SPACES=$(printf "%*s" $PADDING_LEFT "")
+export PADDING_LEFT=$(((TERM_WIDTH - LOGO_WIDTH) / 2))
+PADDING_LEFT_SPACES=$(printf "%*s" $PADDING_LEFT "")
+export PADDING_LEFT_SPACES
 
-# TODO: Update them for install presentation
+# TODO: Update theme for install presentation
 # Tokyo Night theme for gum confirm
 export GUM_CONFIRM_PROMPT_FOREGROUND="6"     # Cyan for prompt
 export GUM_CONFIRM_SELECTED_FOREGROUND="0"   # Black text on selected

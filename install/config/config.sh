@@ -2,7 +2,7 @@
 
 # Copy over narchos configs
 mkdir -p ~/.config
-cp -R ~/.local/share/narchos/config/* ~/.config/
+cp -R "$NARCHOS_PATH/config/*" ~/.config/
 
 # Use default bashrc from narchos
-cp ~/.local/share/narchos/default/bashrc ~/.bashrc
+cp "$NARCHOS_PATH/default/bashrc" ~/.bashrc

@@ -6,7 +6,7 @@ sudo ln -snf /usr/share/icons/Adwaita/symbolic/actions/go-next-symbolic.svg /usr
 
 # Setup theme links
 mkdir -p ~/.config/narchos/themes
-for f in ~/.local/share/narchos/themes/*; do ln -nfs "$f" ~/.config/narchos/themes/; done
+for f in "$NARCHOS_PATH"/themes/*; do ln -nfs "$f" ~/.config/narchos/themes/; done
 
 # Set initial theme
 mkdir -p ~/.config/narchos/current

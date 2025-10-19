@@ -4,7 +4,7 @@
 set -eEo pipefail
 
 # Define narchos locations
-export NARCHOS_PATH="$HOME/.local/share/narchos"
+export NARCHOS_PATH="$/usr/local/share/narchos"
 export NARCHOS_INSTALL="$NARCHOS_PATH/install"
 export NARCHOS_INSTALL_LOG_FILE="/var/log/narchos-install.log"
 export PATH="$NARCHOS_PATH/bin:$PATH"

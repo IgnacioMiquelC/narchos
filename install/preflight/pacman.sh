@@ -5,8 +5,8 @@ if [[ -n ${NARCHOS_ONLINE_INSTALL:-} ]]; then
   sudo pacman -S --needed --noconfirm base-devel
 
   # Configure pacman
-  sudo cp -f ~/.local/share/narchos/default/pacman/pacman.conf /etc/pacman.conf
-  sudo cp -f ~/.local/share/narchos/default/pacman/mirrorlist /etc/pacman.d/mirrorlist
+  sudo cp -f "$NARCHOS_PATH"/default/pacman/pacman.conf /etc/pacman.conf
+  sudo cp -f "$NARCHOS_PATH"/default/pacman/mirrorlist /etc/pacman.d/mirrorlist
 
   # Refresh all repos
   sudo pacman -Syu --noconfirm

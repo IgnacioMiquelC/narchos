@@ -99,7 +99,7 @@ catch_errors() {
 
     case "$choice" in
     "Retry installation")
-      bash ~/.local/share/narchos/install.sh
+      bash "$NARCHOS_PATH/install.sh"
       break
       ;;
     "View full log")

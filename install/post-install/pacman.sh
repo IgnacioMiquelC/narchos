@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Configure pacman
-sudo cp -f ~/.local/share/narchos/default/pacman/pacman.conf /etc/pacman.conf
-sudo cp -f ~/.local/share/narchos/default/pacman/mirrorlist /etc/pacman.d/mirrorlist
+sudo cp -f "$NARCHOS_PATH"/default/pacman/pacman.conf /etc/pacman.conf
+sudo cp -f "$NARCHOS_PATH"/default/pacman/mirrorlist /etc/pacman.d/mirrorlist
 
 if lspci -nn | grep -q "106b:180[12]"; then
   cat <<EOF | sudo tee -a /etc/pacman.conf >/dev/null

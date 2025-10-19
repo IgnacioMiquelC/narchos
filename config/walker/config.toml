@@ -1,7 +1,7 @@
 close_when_open = true
 theme = "narchos-default"
 theme_base = []
-theme_location = ["~/.local/share/narchos/default/walker/themes/"]
+theme_location = ["/usr/local/share/narchos/default/walker/themes/"]
 hotreload_theme = true
 force_keyboard_focus = true
 timeout = 60
