@@ -14,7 +14,7 @@ trap exit_screensaver SIGINT SIGTERM SIGHUP SIGQUIT
 # Open the controlling TTY for reliable key detection even if stdin is altered
 exec 3</dev/tty
 
-hyprctl keyword cursor:invisible true
+hyprctl keyword cursor:invisible true &>/dev/null
 
 mapfile -t EFFECTS < <(tte 2>&1 | grep -oP '{\K[^}]+' | tr ',' ' ' | tr ' ' '\n' | sed -n '/^beams$/,$p' | sort -u)
 
