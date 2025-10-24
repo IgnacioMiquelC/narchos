@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# narchos-theme-remove: Remove a theme from narchos by name
+# narchos-theme-remove: Remove a theme from Narchos by name
 # Usage: narchos-theme-remove <theme-name>
 
 if [ -z "$1" ]; then

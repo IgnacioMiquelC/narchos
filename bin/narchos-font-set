@@ -28,6 +28,8 @@ if [[ -n "$font_name" && "$font_name" != "CNCLD" ]]; then
     narchos-restart-waybar
     narchos-restart-swayosd
     narchos-restart-walker
+
+    narchos-hook font-set "$font_name"
   else
     echo "Font '$font_name' not found."
     exit 1

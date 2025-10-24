@@ -6,9 +6,7 @@ if ! command -v tte &>/dev/null; then
 fi
 
 # Exit early if screensaver is already running
-if hyprctl clients -j | jq -e '.[] | select((.class=="Screensaver") or (.title=="Screensaver"))' &>/dev/null; then
-  exit 0
-fi
+pgrep -f "alacritty --class Screensaver" && exit 0
 
 # Allow screensaver to be turned off but also force started
 if [[ -f ~/.local/state/narchos/toggles/screensaver-off ]] && [[ $1 != "force" ]]; then

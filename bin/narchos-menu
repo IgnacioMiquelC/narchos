@@ -33,11 +33,11 @@ menu() {
     fi
   fi
 
-  echo -e "$options" | walker --dmenu --width 295 --minheight 1 --maxheight 600 -p "$prompt…" "${args[@]}" 2>/dev/null
+  echo -e "$options" | narchos-launch-walker --dmenu --width 295 --minheight 1 --maxheight 600 -p "$prompt…" "${args[@]}" 2>/dev/null
 }
 
 terminal() {
-  alacritty --class=narchos -e "$@"
+  alacritty --class=Narchos -e "$@"
 }
 
 present_terminal() {
@@ -92,21 +92,21 @@ show_capture_menu() {
 }
 
 show_screenshot_menu() {
-  case $(menu "Screenshot" "  Region\n  Window\n  Display") in
-  *Region*) narchos-cmd-screenshot ;;
-  *Window*) narchos-cmd-screenshot window ;;
-  *Display*) narchos-cmd-screenshot output ;;
+  case $(menu "Screenshot" "  Snap with Editing\n  Straight to Clipboard") in
+  *Editing*) narchos-cmd-screenshot smart ;;
+  *Clipboard*) narchos-cmd-screenshot smart clipboard ;;
   *) show_capture_menu ;;
   esac
 }
 
 show_screenrecord_menu() {
-  case $(menu "Screenrecord" "  Region\n  Region + Audio\n  Display\n  Display + Audio") in
-  *"Region + Audio"*) narchos-cmd-screenrecord region audio ;;
+  case $(menu "Screenrecord" "  Region\n  Region + Audio\n  Display\n  Display + Audio\n  Display + Webcam") in
+  *"Region + Audio"*) narchos-cmd-screenrecord region --with-audio ;;
   *Region*) narchos-cmd-screenrecord ;;
-  *"Display + Audio"*) narchos-cmd-screenrecord output audio ;;
+  *"Display + Audio"*) narchos-cmd-screenrecord output --with-audio ;;
+  *"Display + Webcam"*) narchos-cmd-screenrecord output --with-audio --with-webcam ;;
   *Display*) narchos-cmd-screenrecord output ;;
-  *) show_capture_menu ;;
+  *) back_to show_capture_menu ;;
   esac
 }
 
@@ -142,7 +142,7 @@ show_theme_menu() {
 }
 
 show_font_menu() {
-  theme=$(menu "Font" "$(narchos-font-list)" "-w 350" "$(narchos-font-current)")
+  theme=$(menu "Font" "$(narchos-font-list)" "--width 350" "$(narchos-font-current)")
   if [[ "$theme" == "CNCLD" || -z "$theme" ]]; then
     back_to show_style_menu
   else
@@ -232,10 +232,12 @@ show_remove_menu() {
 }
 
 show_update_menu() {
-  case $(menu "Update" "  Process\n󰇅  Hardware\n  Password\n  Timezone") in
+  case $(menu "Update" "  Process\n󰇅  Hardware\n  Firmware\n  Password\n  Timezone\n  Time") in
   *Process*) show_restart_process_menu ;;
   *Hardware*) show_update_hardware_menu ;;
-  *Timezone*) narchos-cmd-tzupdate ;;
+  *Firmware*) present_terminal narchos-update-firmware ;;
+  *Timezone*) present_terminal narchos-tz-select ;;
+  *Time*) present_terminal narchos-reset-time ;;
   *Password*) show_update_password_menu ;;
   *) show_main_menu ;;
   esac
@@ -253,7 +255,8 @@ show_restart_process_menu() {
 }
 
 show_update_hardware_menu() {
-  case $(menu "Restart" "󱚾  Wi-Fi\n󰂯  Bluetooth") in
+  case $(menu "Restart" "  Audio\n󱚾  Wi-Fi\n󰂯  Bluetooth") in
+  *Audio*) present_terminal narchos-restart-pipewire ;;
   *Wi-Fi*) present_terminal narchos-restart-wifi ;;
   *Bluetooth*) present_terminal narchos-restart-bluetooth ;;
   *) show_update_menu ;;
@@ -274,8 +277,8 @@ show_system_menu() {
   *Screensaver*) narchos-launch-screensaver force ;;
   *Suspend*) systemctl suspend ;;
   *Exit*) uwsm stop ;;
-  *Restart*) systemctl reboot ;;
-  *Shutdown*) systemctl poweroff ;;
+  *Restart*) narchos-state clear re*-required && systemctl reboot --no-wall ;;
+  *Shutdown*) narchos-state clear re*-required && systemctl poweroff --no-wall ;;
   *) back_to show_main_menu ;;
   esac
 }

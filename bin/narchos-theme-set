@@ -24,14 +24,18 @@ ln -nsf "$THEME_PATH" "$CURRENT_THEME_DIR"
 narchos-theme-bg-next
 
 # Restart components to apply new theme
-narchos-restart-waybar
+if pgrep -x waybar >/dev/null; then
+  narchos-restart-waybar
+fi
 narchos-restart-swayosd
 hyprctl reload
 pkill -SIGUSR2 btop
 makoctl reload
 
-# Change gnome, browser, vscode themes
+# Change gnome themes
 narchos-theme-set-terminal
 narchos-theme-set-gnome
-narchos-theme-set-eza
 narchos-theme-set-browser
+
+# Call hook on theme set
+narchos-hook theme-set "$THEME_NAME"
