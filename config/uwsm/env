@@ -2,7 +2,7 @@
 
 # Ensure narchos bins are in the path
 export NARCHOS_PATH=$HOME/.local/share/narchos
-export PATH=$NARCHOS_PATH/bin/:$PATH
+export PATH=~/.local/share/narchos/bin/:$PATH
 
 # Set default terminal and editor
 source ~/.config/uwsm/default

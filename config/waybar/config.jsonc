@@ -129,7 +129,7 @@
   },
   "custom/screenrecording-indicator": {
     "on-click": "narchos-cmd-screenrecord",
-    "exec": "$NARCHOS_PATH/default/waybar/indicators/screen-recording.sh",
+    "exec": "~/.local/share/narchos/default/waybar/indicators/screen-recording.sh",
     "signal": 8,
     "return-type": "json"
   },
