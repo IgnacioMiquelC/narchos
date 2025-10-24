@@ -1,8 +1,8 @@
 # Changes require a relaunch of Hyprland to take effect.
 
 # Ensure narchos bins are in the path
-export NARCHOS_PATH=$HOME/.local/share/narchos
-export PATH=~/.local/share/narchos/bin/:$PATH
+export NARCHOS_PATH=/usr/local/share/narchos
+export PATH=$NARCHOS_PATH/bin/:$PATH
 
 # Set default terminal and editor
 source ~/.config/uwsm/default

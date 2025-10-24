@@ -1,4 +1,4 @@
-# narchos core package list installed via install/packages.sh
+# Narchos core package list installed via install/packaging/base.sh
 # This file is also used by the ISO builder when determining needs
 
 alacritty
@@ -19,7 +19,21 @@ docker
 docker-buildx
 docker-compose
 dust
+elephant
+elephant-bluetooth
+elephant-calc
+elephant-clipboard
+elephant-desktopapplications
+elephant-files
+elephant-menus
+elephant-providerlist
+elephant-runner
+elephant-symbols
+elephant-todo
+elephant-unicode
+elephant-websearch
 evince
+expac
 eza
 fastfetch
 fcitx5
@@ -34,6 +48,8 @@ gnome-calculator
 gnome-disk-utility
 gnome-keyring
 gnome-themes-extra
+grim
+gpu-screen-recorder
 gum
 gvfs-mtp
 gvfs-nfs
@@ -43,12 +59,12 @@ hyprland
 hyprland-qtutils
 hyprlock
 hyprpicker
-hyprshot
 hyprsunset
 imagemagick
 impala
 imv
 inetutils
+inxi
 iwd
 jq
 kdenlive
@@ -61,6 +77,7 @@ libyaml
 libqalculate
 libreoffice
 llvm
+localsend
 luarocks
 mako
 man
@@ -108,14 +125,12 @@ unzip
 uwsm
 walker
 waybar
-wf-recorder
+wayfreeze
 whois
 wireless-regdb
 wiremix
 wireplumber
-wl-clip-persist
 wl-clipboard
-wl-screenrec
 woff2-font-awesome
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
