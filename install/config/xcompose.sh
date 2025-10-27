@@ -2,7 +2,7 @@
 
 # Set default XCompose that is triggered with CapsLock
 tee ~/.XCompose >/dev/null <<EOF
-include "%H/.local/share/narchos/default/xcompose"
+include "/usr/local/share/narchos/default/xcompose"
 
 # Identification
 <Multi_key> <space> <n> : "$NARCHOS_USER_NAME"
