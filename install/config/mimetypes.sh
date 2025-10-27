@@ -1,7 +1,7 @@
 #!/bin/bash
 
 narchos-refresh-applications
-update-desktop-database ~/.local/share/applications
+update-desktop-database /usr/local/share/applications
 
 # Open all images with imv
 xdg-mime default imv.desktop image/png

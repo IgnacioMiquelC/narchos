@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IGNORED_PACKAGES_FILE="$HOME/.local/share/narchos/install/packages.ignored"
+IGNORED_PACKAGES_FILE="/usr/local/share/narchos/install/packages.ignored"
 
 if [[ -f $IGNORED_PACKAGES_FILE ]]; then
   tr '\r\n' ',' <"$IGNORED_PACKAGES_FILE" | sed 's/,$//'

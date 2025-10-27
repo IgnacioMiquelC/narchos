@@ -18,8 +18,8 @@ if [[ -z "$APP_NAME" || -z "$APP_EXEC" || -z "$ICON_URL" ]]; then
   exit 1
 fi
 
-ICON_DIR="$HOME/.local/share/applications/icons"
-DESKTOP_FILE="$HOME/.local/share/applications/$APP_NAME.desktop"
+ICON_DIR="/usr/local/share/applications/icons"
+DESKTOP_FILE="/usr/local/share/applications/$APP_NAME.desktop"
 
 if [[ ! "$ICON_URL" =~ ^https?:// ]] && [ -f "$ICON_URL" ]; then
   ICON_PATH="$ICON_URL"

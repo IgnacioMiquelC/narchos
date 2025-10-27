@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ICON_DIR="$HOME/.local/share/applications/icons"
-DESKTOP_DIR="$HOME/.local/share/applications/"
+ICON_DIR="/usr/local/share/applications/icons"
+DESKTOP_DIR="/usr/local/share/applications/"
 
 if [ "$#" -eq 0 ]; then
   # Find all web apps

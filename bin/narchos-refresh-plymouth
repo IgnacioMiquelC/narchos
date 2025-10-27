@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo cp ~/.local/share/narchos/default/plymouth/* /usr/share/plymouth/themes/narchos/
+sudo cp /usr/local/share/narchos/default/plymouth/* /usr/share/plymouth/themes/narchos/
 sudo plymouth-set-default-theme narchos
 
 if command -v limine-mkinitcpio &>/dev/null; then

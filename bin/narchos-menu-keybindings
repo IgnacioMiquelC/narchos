@@ -78,7 +78,7 @@ dynamic_bindings() {
     jq -r '.[] | {modmask, key, keycode, description, dispatcher, arg} | "\(.modmask),\(.key)@\(.keycode),\(.description),\(.dispatcher),\(.arg)"' |
     sed -r \
       -e 's/null//' \
-        -e "s,~/.local/share/narchos/bin/,," \
+        -e "s,/usr/local/share/narchos/bin/,," \
       -e 's,uwsm app -- ,,' \
       -e 's,uwsm-app -- ,,' \
       -e 's/@0//' \

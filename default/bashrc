@@ -3,7 +3,7 @@
 
 # All the default narchos aliases and functions
 # (don't mess with these directly, just overwrite them here!)
-source "$HOME/.local/share/narchos/default/bash/rc"
+source "/usr/local/share/narchos/default/bash/rc"
 
 # Add your own exports, aliases, and functions here.
 #

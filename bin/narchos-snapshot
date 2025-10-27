@@ -3,7 +3,7 @@
 set -e
 
 COMMAND="$1"
-NARCHOS_PATH=${NARCHOS_PATH:-$HOME/.local/share/narchos}
+NARCHOS_PATH=${NARCHOS_PATH:-/usr/local/share/narchos}
 
 if [[ -z $COMMAND ]]; then
   echo "Usage: narchos-snapshot <create|restore>" >&2

@@ -2,6 +2,6 @@
 
 clear
 echo -e "\033[32m"
-cat <~/.local/share/narchos/logo.txt
+cat </usr/local/share/narchos/logo.txt
 echo -e "\033[0m"
 echo

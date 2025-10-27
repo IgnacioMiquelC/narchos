@@ -1,20 +1,30 @@
 #!/bin/bash
 
-STATE_DIR="$HOME/.local/state/narchos"
-mkdir -p "$STATE_DIR"
-
-COMMAND="$1"
-STATE_NAME="$2"
+SCOPE="$1"
+COMMAND="$2"
+STATE_NAME="$3"
 
 if [[ -z "$COMMAND" ]]; then
-  echo "Usage: narchos-state <set|clear> <state-name-or-pattern>"
+  echo "Usage: narchos-state <system|user> <set|clear> <state-name-or-pattern>"
   exit 1
 fi
 
 if [[ -z "$STATE_NAME" ]]; then
-  echo "Usage: narchos-state $COMMAND <state-name>"
+  echo "Usage: narchos-state <system|user> $COMMAND <state-name-or-pattern>"
   exit 1
 fi
+
+if [[ -z "$SCOPE" ]]; then
+  echo "Usage: narchos-state <system|user> $COMMAND <state-name-or-pattern>"
+  exit 1
+fi
+
+STATE_DIR="/state/narchos"
+case "$SCOPE" in
+system) STATE_DIR=/usr/local/$STATE_DIR ;;
+user) STATE_DIR=$HOME/.local/$STATE_DIR ;;
+esac
+mkdir -p "$STATE_DIR"
 
 case "$COMMAND" in
 set) touch "$STATE_DIR/$STATE_NAME" ;;

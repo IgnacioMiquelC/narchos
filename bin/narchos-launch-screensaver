@@ -28,7 +28,7 @@ for monitor in $(hyprctl monitors -j | jq -r '.[] | .name'); do
     alacritty)
       hyprctl dispatch exec -- \
         alacritty --class Screensaver \
-        --config-file "$HOME/.local/share/narchos/default/alacritty/screensaver.toml" \
+        --config-file "$HOME/.config/alacritty/screensaver.toml" \
         -e narchos-cmd-screensaver
       ;;
   esac
