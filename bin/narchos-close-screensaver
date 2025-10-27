@@ -25,7 +25,7 @@ if command -v hyprctl >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
   fi
 fi
 
-# Fallbacks: match command lines for both Alacritty and Kitty screensaver instances
+# Fallbacks: match command lines for screensaver instances
 pkill -f 'alacritty.*--class[ =]Screensaver' 2>/dev/null || true
 
 exit 0
