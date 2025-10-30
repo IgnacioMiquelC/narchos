@@ -5,7 +5,7 @@ set -euo pipefail
 narchos-launch-screensaver force || true
 
 # Small delay to ensure screensaver windows appear
-sleep 0.5
+sleep 0.2
 
 # Lock the screen and block until unlock
 if pidof hyprlock >/dev/null 2>&1; then
