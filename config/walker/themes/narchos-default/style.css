@@ -11,7 +11,6 @@
 }
 
 scrollbar {
-  opacity: 0;
 }
 
 .normal-icons {
@@ -25,16 +24,18 @@ scrollbar {
 .box-wrapper {
   background: alpha(@base, 0.95);
   padding: 20px;
-  border: 2px solid @border;
+  border-radius: 24px;
 }
 
 .preview-box {
 }
 
 .box {
+  border-radius: 8px;
 }
 
 .search-container {
+  border-radius: 8px;
   background: @base;
   padding: 10px;
 }
@@ -53,6 +54,7 @@ scrollbar {
 }
 
 .content-container {
+  border-radius: 8px;
 }
 
 .placeholder {

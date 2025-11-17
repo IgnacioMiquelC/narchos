@@ -49,9 +49,9 @@
     }
   },
   "custom/narchos": {
-    "format": "<span font='narchos'>\ue800</span>",
+    "format": "☰",
     "on-click": "narchos-menu",
-    "tooltip-format": "narchos Menu\n\nSuper + Alt + Space"
+    "tooltip-format": "Menu\n\nSuper + Alt + Space"
   },
 
   "cpu": {

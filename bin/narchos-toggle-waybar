@@ -1,7 +1,10 @@
 #!/bin/bash
 
-if pgrep -x waybar >/dev/null; then
-  pkill -x waybar
+CURRENT_SID=$(ps -o sid= -p $$ | tr -d ' ')
+WAYBAR_PIDS=$(pgrep -x waybar | xargs -r ps -o pid,sid --no-header | awk -v sid="$CURRENT_SID" '$2 == sid {print $1}')
+
+if [ -n "$WAYBAR_PIDS" ]; then
+  echo "$WAYBAR_PIDS" | xargs -r kill
 else
   uwsm-app -- waybar >/dev/null 2>&1 &
 fi

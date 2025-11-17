@@ -1,4 +1,9 @@
 #!/bin/bash
 
-pkill -x "$1"
-setsid uwsm app -- "$1" >/dev/null 2>&1 &
+CURRENT_SID=$(ps -o sid= -p $$ | tr -d ' ')
+APP_PIDS=$(pgrep -x "$1" | xargs -r ps -o pid,sid --no-header | awk -v sid="$CURRENT_SID" '$2 == sid {print $1}')
+
+if [ -n "$APP_PIDS" ]; then
+  echo "$APP_PIDS" | xargs -r kill
+fi
+  uwsm-app -- "$1" >/dev/null 2>&1 &
