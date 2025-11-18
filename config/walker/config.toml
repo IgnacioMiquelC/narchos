@@ -31,8 +31,12 @@ default = [
   "menus",
   "websearch",
 ] # providers to be queried by default
-empty = ["desktopapplications"] # providers to be queried when query is empty
-max_results = 50 # global max results
+
+empty = [  # providers to be queried when query is empty
+  "desktopapplications"
+]
+
+max_results = 50
 
 [providers.sets] # define your own defaults/empty sets of providers
 [providers.max_results_provider] # define max results per provider in here

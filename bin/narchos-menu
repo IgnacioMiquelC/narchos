@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="/usr/local/share/narchos/bin:$PATH"
+export PATH="$NARCHOS_PATH/bin:$PATH"
 
 # Set to true when going directly to a submenu, so we can exit directly
 BACK_TO_EXIT=false
@@ -37,7 +37,7 @@ menu() {
 }
 
 terminal() {
-  alacritty --class=Narchos -e "$@"
+  xdg-terminal-exec --class=Narchos -e "$@"
 }
 
 present_terminal() {
@@ -55,14 +55,6 @@ install() {
 
 install_and_launch() {
   present_terminal "echo 'Installing $1...'; sudo pacman -S --noconfirm $2 && setsid gtk-launch $3"
-}
-
-install_font() {
-  present_terminal "echo 'Installing $1...'; sudo pacman -S --noconfirm --needed $2 && sleep 2 && narchos-font-set '$3'"
-}
-
-install_terminal() {
-  present_terminal "narchos-install-terminal $1"
 }
 
 aur_install() {
@@ -157,7 +149,7 @@ show_setup_menu() {
   options="$options\n  Defaults\n󰱔  DNS\n  Security\n  Config"
 
   case $(menu "Setup" "$options") in
-  *Audio*) $TERMINAL --class=Wiremix -e wiremix ;;
+  *Audio*) xdg-terminal-exec --class=Wiremix -e wiremix ;;
   *Wifi*)
     rfkill unblock wifi
     narchos-launch-wifi
@@ -232,8 +224,7 @@ show_remove_menu() {
 }
 
 show_update_menu() {
-  case $(menu "Update" "  Process\n󰇅  Hardware\n  Firmware\n  Password\n  Timezone\n  Time") in
-  *Process*) show_restart_process_menu ;;
+  case $(menu "Update" "󰇅  Hardware\n  Firmware\n  Password\n  Timezone\n  Time") in
   *Hardware*) show_update_hardware_menu ;;
   *Firmware*) present_terminal narchos-update-firmware ;;
   *Timezone*) present_terminal narchos-tz-select ;;
@@ -284,7 +275,7 @@ show_system_menu() {
 }
 
 show_main_menu() {
-  go_to_menu "$(menu "Go" "󰀻  Apps\n󱓞  Trigger\n  Style\n󰸌  Theme\n  Screenshot\n  Screenrecord\n  Setup\n󱐋  Power Profile\n󰉉  Install\n󰭌  Remove\n  Update\n  System")"
+  go_to_menu "$(menu "Go" "󰀻  Apps\n󱓞  Trigger\n  Style\n  Screenshot\n  Screenrecord\n  Setup\n󱐋  Power Profile\n󰉉  Install\n󰭌  Remove\n  Update\n  Reload\n  System")"
 }
 
 go_to_menu() {
@@ -292,7 +283,6 @@ go_to_menu() {
   *apps*) walker -p "Launch…" ;;
   *trigger*) show_trigger_menu ;;
   *style*) show_style_menu ;;
-  *theme*) show_theme_menu ;;
   *screenshot*) show_screenshot_menu ;;
   *screenrecord*) show_screenrecord_menu ;;
   *setup*) show_setup_menu ;;
@@ -300,6 +290,7 @@ go_to_menu() {
   *install*) show_install_menu ;;
   *remove*) show_remove_menu ;;
   *update*) show_update_menu ;;
+  *reload*) show_restart_process_menu ;;
   *system*) show_system_menu ;;
   esac
 }

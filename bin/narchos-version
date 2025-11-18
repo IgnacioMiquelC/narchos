@@ -1,2 +1,2 @@
 #!/bin/bash
-cat /usr/local/share/narchos/version
+cat "$NARCHOS_PATH"/version

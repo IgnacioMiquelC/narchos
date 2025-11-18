@@ -17,21 +17,11 @@ focused=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')
 
 for monitor in $(hyprctl monitors -j | jq -r '.[] | .name'); do
   hyprctl dispatch focusmonitor "$monitor"
-
-  case $TERMINAL in
-    kitty)
-      hyprctl dispatch exec -- \
-        kitty --class Screensaver --title Screensaver \
-        --config ~/.config/kitty/screensaver.conf \
-        narchos-cmd-screensaver
-      ;;
-    alacritty)
-      hyprctl dispatch exec -- \
-        alacritty --class Screensaver \
-        --config-file "$HOME/.config/alacritty/screensaver.toml" \
-        -e narchos-cmd-screensaver
-      ;;
-  esac
+    hyprctl dispatch exec -- \
+      alacritty \
+      --class Screensaver \
+      --config-file "$HOME/.config/alacritty/screensaver.toml" \
+      -e narchos-cmd-screensaver
 done
 
 hyprctl dispatch focusmonitor "$focused"

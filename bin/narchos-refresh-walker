@@ -1,6 +1,0 @@
-#!/bin/bash
-
-narchos-refresh-config walker/config.toml
-narchos-refresh-config elephant/calc.toml
-narchos-refresh-config elephant/desktopapplications.toml
-narchos-restart-walker
